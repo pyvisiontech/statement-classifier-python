@@ -236,6 +236,17 @@ def extract_text(doc):
         lines = [line.strip() for line in lines if line.strip()]
         all_lines.extend(lines)
     extracted_text = "\n".join(all_lines)
+
+    if (extracted_text == ''):
+        all_lines = []
+        reader = easyocr.Reader(['en'])
+        for page in doc:
+            pix = page.get_pixmap(dpi=300)
+            img_bytes = pix.tobytes("png")
+            text = reader.readtext(img_bytes, detail=0)
+            all_lines.extend(text)
+        extracted_text = all_lines
+        
     return extracted_text
 
 def download_file_from_s3(presigned_url):
