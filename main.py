@@ -238,6 +238,7 @@ def extract_text(doc):
     extracted_text = "\n".join(all_lines)
 
     if (extracted_text == ''):
+        logger.info("Moving for OCR as no text extracted from doc")
         all_lines = []
         reader = easyocr.Reader(['en'])
         for page in doc:
