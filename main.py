@@ -209,7 +209,7 @@ def categorize_transactions_batch(client, df, amount_threshold=100, batch_size=2
 
         # Parse JSON output
         # TODO: REMOVE THIS LOGGING
-        logger.info(f"pdf to csv response: {response}")
+        # logger.info(f"pdf to csv response: {response}")
         raw_output = response.choices[0].message.content
         logger.info("LLM response generated from main classifier")
         batch_results = safe_parse_json(raw_output)
@@ -222,6 +222,8 @@ def categorize_transactions_batch(client, df, amount_threshold=100, batch_size=2
 
     # Convert results to DataFrame
     results_df = pd.DataFrame(results)
+    res_shape = results_df.shape
+    logger.info(f"pdf to csv response: {res_shape}")
 
     return results_df
 
