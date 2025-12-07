@@ -17,6 +17,7 @@ import logging
 import io
 import logging
 import sys
+import easyocr
 
 # Force logs to stdout and set formatting
 logging.basicConfig(
