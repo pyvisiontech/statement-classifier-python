@@ -6,3 +6,4 @@ tiktoken
 PyMuPDF
 supabase
 requests
+easyocr
